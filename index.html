@@ -3,12 +3,12 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>webDev - Advanced CSS</title>
+        <title>webDev - Basics of JS</title>
         <link rel="icon" type="image/png" href="./images/favicon.png" sizes="32x32" />
-        <meta name="description" content="The page demonstrates advanced CSS techniques: responsive layout, animations, and variables" />
+        <meta name="description" content="The page demonstrates Basics of JS" />
         <link rel="stylesheet" href="./assets/styles/bootstrap-reboot.min.css" />
         <link rel="stylesheet" href="./assets/styles/main.css" />
-        <script src="./assets/js/main.js"></script>
+        <!-- <script src="./assets/js/main.js"></script> -->
     </head>
     <body>
         <div id="root">
@@ -53,7 +53,7 @@
                                 </svg>
                             </div>
                             <div class="text-box">
-                                <strong>Advanced CSS</strong>
+                                <strong class="iterationName"></strong>
                             </div>
                         </div>
                     </a>
@@ -76,7 +76,7 @@
                 <div class="app-body d-flex">
                     <main class="app-block h-effect-01">
                         <article>
-                            <h1>Hello, world!</h1>
+                            <h1 id="app-main-heading">Hello, world!</h1>
                             <p><em>Lorem ipsum</em>, dolor sit amet consectetur adipisicing elit.<br />Sint eius fugit dolorem dolore alias <span style="text-decoration: underline">quos accusamus</span> enim exercitationem, fuga autem <strong>maxime dignissimos</strong> cum quas perferendis voluptates ex accusantium harum architecto?</p>
                         </article>
                         <section class="card">
@@ -191,7 +191,7 @@
                                     </svg>
                                 </div>
                                 <div class="text-box">
-                                    <strong>Advanced CSS</strong>
+                                    <strong class="iterationName"></strong>
                                 </div>
                             </div>
                         </a>
@@ -200,5 +200,99 @@
                 </footer>
             </div>
         </div>
+        <script>
+            "use strict";
+
+            /*
+This script was made to demonstrate the basics of JavaScript.
+Written by @1vanguard
+*/
+
+            // Add some constants
+            const helloWorld = "Hello, World!";
+            const BASE_NAME = "webDev";
+            const sRGBColorsNum = 16777216,
+                distanceToMoonMm = 384_400_000_000n;
+
+            // const scriptBirthday = '2025.11.01';
+            const scriptBirthday = new Date("2025-11-01T12:01:02Z"); // Specifying a date using a special JavaScript function
+
+            // Add a few variables
+            var letMeDie = "I'm an outdated variable notation, but I can still be found in legacy code.";
+            let projectName = BASE_NAME,
+                projectIterationName,
+                // , projectStatus = undefined
+                projectTechList = ["HTML", "CSS", "JS", "TypeScript", "React"],
+                num_1 = 1,
+                num_2 = -10,
+                num_3 = "3",
+                num_4 = 4.5,
+                num_5 = 0,
+                num_6 = " 6... he-he",
+                num_7 = "seven",
+                num_8,
+                num_9,
+                num_10,
+                num_11 = undefined,
+                num_12 = 12,
+                num_13 = null,
+                isDeveloper = false,
+                user = {},
+                crazyArray02 = [BASE_NAME, projectTechList, distanceToMoonMm, [], user, 21, undefined, "Am I good enough?", false, [true, projectTechList[3]], num_7],
+                crazyArray03 = crazyArray02;
+
+            let numSuper = (num_8 = num_9 = num_10 = 2 * num_1);
+            let numError = numSuper / num_11;
+            let userName = "";
+            let yearsOfExperience = undefined;
+
+            // Set project iteration name
+            projectIterationName = "Basics of JS";
+
+            // Show greetings and some questions for user
+            alert(helloWorld);
+            if (userName.length < 1) {
+                let userNameInput = prompt("What is your name?");
+                typeof userNameInput === "string" && (userName = userNameInput);
+                user["name"] = userName;
+            }
+            if (userName.length > 0) {
+                isDeveloper = confirm("Are you a web developer?");
+            }
+
+            // Define resutText01 based on user's unswer
+            let resutText01 = isDeveloper ? "Check dev console, please!" : 'Press F12 an open "Console" tab, please!';
+            alert(resutText01);
+
+            // Do some things with user data
+            let proUser;
+            user.isDeveloper = isDeveloper ? "Yes" : "No";
+            isDeveloper ? (proUser = user) : (proUser = {});
+
+            if (isDeveloper) {
+                proUser.requriedTechList = projectTechList;
+            }
+            user.yearsOfExperience = yearsOfExperience;
+
+            // Output data in console
+            console.log("Script birthday: " + scriptBirthday);
+            userName && console.log(userName + ", welcome to JS world!");
+            if (isDeveloper) {
+                console.log("Congratulations! You are a developer and it's good!\nHere is some data about you:");
+                for (let key in proUser) {
+                    console.log(key + ": ", user[key]);
+                }
+            } else {
+                console.warn("You are not a developer but it's easy to fix it!\tYou should master the following technologies:");
+                for (let i = 0; i < projectTechList.length; i++) {
+                    console.log(projectTechList[i]);
+                }
+            }
+
+            // TO DO: Simple timer with while ...do
+
+            // Show some Nan
+            console.error("This is example of math error result: ", numError);
+        </script>
     </body>
 </html>
