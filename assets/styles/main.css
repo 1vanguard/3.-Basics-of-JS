@@ -120,6 +120,10 @@ body > * > * {
     flex-grow: 1;
 }
 
+script {
+    display: none;
+}
+
 button {
     border-radius: 5px;
     overflow: hidden;

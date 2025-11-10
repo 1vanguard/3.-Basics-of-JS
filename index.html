@@ -53,7 +53,7 @@
                                 </svg>
                             </div>
                             <div class="text-box">
-                                <strong class="iterationName"></strong>
+                                <strong class="iterationName">Basics of JS</strong>
                             </div>
                         </div>
                     </a>
@@ -191,7 +191,7 @@
                                     </svg>
                                 </div>
                                 <div class="text-box">
-                                    <strong class="iterationName"></strong>
+                                    <strong class="iterationName">Basics of JS</strong>
                                 </div>
                             </div>
                         </a>
@@ -204,25 +204,25 @@
             "use strict";
 
             /*
-This script was made to demonstrate the basics of JavaScript.
-Written by @1vanguard
-*/
+            This script was made to demonstrate the basics of JavaScript.
+            Written by @1vanguard
+            */
 
             // Add some constants
             const helloWorld = "Hello, World!";
             const BASE_NAME = "webDev";
             const sRGBColorsNum = 16777216,
                 distanceToMoonMm = 384_400_000_000n;
-
             // const scriptBirthday = '2025.11.01';
             const scriptBirthday = new Date("2025-11-01T12:01:02Z"); // Specifying a date using a special JavaScript function
 
             // Add a few variables
             var letMeDie = "I'm an outdated variable notation, but I can still be found in legacy code.";
             let projectName = BASE_NAME,
-                projectIterationName,
+                projectIterationName = "Basics of JS",
                 // , projectStatus = undefined
                 projectTechList = ["HTML", "CSS", "JS", "TypeScript", "React"],
+                num_0 = "0",
                 num_1 = 1,
                 num_2 = -10,
                 num_3 = "3",
@@ -233,66 +233,72 @@ Written by @1vanguard
                 num_8,
                 num_9,
                 num_10,
-                num_11 = undefined,
-                num_12 = 12,
-                num_13 = null,
+                num_11 = 12,
+                num_12 = null,
+                num_13 = 0,
                 isDeveloper = false,
                 user = {},
+                proUser,
                 crazyArray02 = [BASE_NAME, projectTechList, distanceToMoonMm, [], user, 21, undefined, "Am I good enough?", false, [true, projectTechList[3]], num_7],
-                crazyArray03 = crazyArray02;
+                crazyArray03 = crazyArray02,
+                yearsOfExperience = undefined;
 
-            let numSuper = (num_8 = num_9 = num_10 = 2 * num_1);
-            let numError = numSuper / num_11;
-            let userName = "";
-            let yearsOfExperience = undefined;
-
-            // Set project iteration name
-            projectIterationName = "Basics of JS";
+            let num_super = (num_8 = num_9 = num_10 = -4 - 2 * -++num_1 + (num_5 *= 13));
+            let num_error = num_super / yearsOfExperience;
+            let userName = "",
+                userAge;
 
             // Show greetings and some questions for user
             alert(helloWorld);
-            if (userName.length < 1) {
-                let userNameInput = prompt("What is your name?");
-                typeof userNameInput === "string" && (userName = userNameInput);
-                user["name"] = userName;
-            }
-            if (userName.length > 0) {
-                isDeveloper = confirm("Are you a web developer?");
-            }
 
-            // Define resutText01 based on user's unswer
-            let resutText01 = isDeveloper ? "Check dev console, please!" : 'Press F12 an open "Console" tab, please!';
-            alert(resutText01);
+            userAge = prompt("How old are you?", 18);
+            let userNameInput = prompt("What is your name?");
+            isDeveloper = confirm("Are you a web developer?");
 
             // Do some things with user data
-            let proUser;
+            user["age"] = userAge;
+            if (userName.length < 1) {
+                if (typeof userNameInput === "string") userName = userNameInput;
+                user["name"] = userName;
+            }
+
             user.isDeveloper = isDeveloper ? "Yes" : "No";
             isDeveloper ? (proUser = user) : (proUser = {});
 
             if (isDeveloper) {
                 proUser.requriedTechList = projectTechList;
+                let yearsOfExperienceInput = prompt("How many years of experience do you have?");
+                user.yearsOfExperience ??= yearsOfExperienceInput ? yearsOfExperienceInput : yearsOfExperience;
             }
-            user.yearsOfExperience = yearsOfExperience;
 
             // Output data in console
             console.log("Script birthday: " + scriptBirthday);
             userName && console.log(userName + ", welcome to JS world!");
-            if (isDeveloper) {
-                console.log("Congratulations! You are a developer and it's good!\nHere is some data about you:");
-                for (let key in proUser) {
-                    console.log(key + ": ", user[key]);
-                }
-            } else {
+
+            if (!isDeveloper && distanceToMoonMm) {
                 console.warn("You are not a developer but it's easy to fix it!\tYou should master the following technologies:");
                 for (let i = 0; i < projectTechList.length; i++) {
                     console.log(projectTechList[i]);
                 }
+            } else {
+                console.log("Congratulations! You are a developer and you are on the right side!\nHere is some data about you:");
+                for (let key in proUser) {
+                    console.log(key + ": ", proUser[key]);
+                }
             }
 
-            // TO DO: Simple timer with while ...do
+            // Simple timer "While ... do" example
+            let i = num_13
+            while (i++ < num_11 - 9) {
+                console.log(`This is iteration №${i} of "While ... do" loop`);
+            }
 
             // Show some Nan
-            console.error("This is example of math error result: ", numError);
+            console.error("This is example of math error result: ", num_error);
+
+            // Define resutText01 based on user's unswer and show result alert
+            let resutText01 = isDeveloper ? "Check dev console, please!" : 'Press F12 an open "Console" tab, please!';
+            alert(resutText01);
         </script>
     </body>
 </html>
