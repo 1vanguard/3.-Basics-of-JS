@@ -271,6 +271,7 @@
                 user.yearsOfExperience ??= yearsOfExperienceInput ? yearsOfExperienceInput : yearsOfExperience;
             }
 
+
             // Output data in console
             console.log("Script birthday: " + scriptBirthday);
             userName && console.log(userName + ", welcome to JS world!");
@@ -287,18 +288,29 @@
                 }
             }
 
+            // Show some Nan
+            console.error('This is example of math error result: ', num_error);
+
             // Simple timer "While ... do" example
-            let i = num_13
+            let i = num_13;
             while (i++ < num_11 - 9) {
                 console.log(`This is iteration №${i} of "While ... do" loop`);
             }
 
-            // Show some Nan
-            console.error("This is example of math error result: ", num_error);
+            // Mutate arrays and show result
+            crazyArray03[8] = true
+            console.log(`I'm mutated element of the crazyArray02 with index 8: ${crazyArray02[8]}`);
+            console.log("I'm mutated crazyArray02 itself:", crazyArray02);
+
+            // Output user objects in console
+            console.log('This is user object: ', user)
+            console.log('This is proUser object: ', proUser)
+
 
             // Define resutText01 based on user's unswer and show result alert
             let resutText01 = isDeveloper ? "Check dev console, please!" : 'Press F12 an open "Console" tab, please!';
             alert(resutText01);
+
         </script>
     </body>
 </html>
