@@ -214,10 +214,9 @@
             const sRGBColorsNum = 16777216,
                 distanceToMoonMm = 384_400_000_000n;
             // const scriptBirthday = '2025.11.01';
-            const scriptBirthday = new Date("2025-11-01T12:01:02Z"); // Specifying a date using a special JavaScript function
+            const scriptBirthday = new Date("2025-11-01T12:01:02Z").toLocaleDateString(); // Specifying a date using a special JavaScript function
 
             // Add a few variables
-            var letMeDie = "I'm an outdated variable notation, but I can still be found in legacy code.";
             let projectName = BASE_NAME,
                 projectIterationName = "Basics of JS",
                 // , projectStatus = undefined
@@ -241,12 +240,16 @@
                 proUser,
                 crazyArray02 = [BASE_NAME, projectTechList, distanceToMoonMm, [], user, 21, undefined, "Am I good enough?", false, [true, projectTechList[3]], num_7],
                 crazyArray03 = crazyArray02,
-                yearsOfExperience = undefined;
-
+                yearsOfExperience = null;
             let num_super = (num_8 = num_9 = num_10 = -4 - 2 * -++num_1 + (num_5 *= 13));
             let num_error = num_super / yearsOfExperience;
-            let userName = "",
+            let userExperienceLevel = "user",
+                userName = "",
                 userAge;
+
+            // Add a Symbol property to user object (hidden from regular enumeration)
+            const userPrivateId = Symbol("private user id");
+            user[userPrivateId] = "id_" + Date.now(); // Unic ID
 
             // Show greetings and some questions for user
             alert(helloWorld);
@@ -268,28 +271,82 @@
             if (isDeveloper) {
                 proUser.requriedTechList = projectTechList;
                 let yearsOfExperienceInput = prompt("How many years of experience do you have?");
-                user.yearsOfExperience ??= yearsOfExperienceInput ? yearsOfExperienceInput : yearsOfExperience;
+                proUser.yearsOfExperience ??= yearsOfExperienceInput ? yearsOfExperienceInput : yearsOfExperience
+
+                // Evaluate user's experience level using switch with grouped values
+                const exp = parseInt(proUser.yearsOfExperience);
+                if (isNaN(exp)) {
+                    userExperienceLevel = "unknown";
+                } else {
+                    switch (true) {
+                        case exp >= 0 && exp < 1:
+                            userExperienceLevel = "junior";
+                            break;
+                        case exp >= 1 && exp < 3:
+                            userExperienceLevel = "middle";
+                            break;
+                        case exp >= 3 && exp < 5:
+                        case exp >= 5 && exp < 7:
+                            userExperienceLevel = "senior";
+                            break;
+                        case exp >= 7 && exp < 10:
+                        case exp >= 10 && exp < 15:
+                        case exp >= 15:
+                            userExperienceLevel = "expert";
+                            break;
+                        default:
+                            userExperienceLevel = "unknown";
+                    }
+                }
+                proUser["userExperienceLevel"] = userExperienceLevel;
             }
 
+            do {
+                if (helloWorld == "Hello, World!") {
+                    // Add example of var notation
+                    var letMeDie = "I'm an outdated variable notation, but I can still be found in legacy code.";
+                    let let_VS_var = "I'm a \"let\" declaration. I've been defined here and are only accessible within the body of the if statement: if (helloWorld == 'Hello, World!').";
+                }
+                num_1++;
+            } while (num_1 < 2);
 
             // Output data in console
             console.log("Script birthday: " + scriptBirthday);
             userName && console.log(userName + ", welcome to JS world!");
-
-            if (!isDeveloper && distanceToMoonMm) {
+            isDeveloper || console.log("Your experience level is:", userExperienceLevel);
+            if (distanceToMoonMm && !isDeveloper) {
                 console.warn("You are not a developer but it's easy to fix it!\tYou should master the following technologies:");
                 for (let i = 0; i < projectTechList.length; i++) {
-                    console.log(projectTechList[i]);
+                    if (i < 3) console.log(projectTechList[i]);
                 }
             } else {
-                console.log("Congratulations! You are a developer and you are on the right side!\nHere is some data about you:");
+                console.log("Congratulations! You are a developer and you are on the right side!");
+                console.log(`Symbol property "userPrivateId" was added to user object on 251 string. You can access it directly user[userPrivateId] (${user[userPrivateId]}). But it's not visible in regular keys, JSON or in for...in loop.\nFor example:`);
+                console.log("Object.keys(user): ", Object.keys(user));
                 for (let key in proUser) {
                     console.log(key + ": ", proUser[key]);
                 }
+                console.log("Stringified JSON object: ", JSON.stringify(user));
             }
 
+            // Show example of "var" and let_VS_var
+            console.log('This is example of "var" works: ', letMeDie);
+            try {
+                if (let_VS_var) console.log('This is example of "let_VS_var": ', let_VS_var);
+            } catch {
+                console.log('This demonstrates "let_VS_var" scope. let_VS_var was declared inside a block and is not accessible here.');
+            }
+
+            // Show some types check
+            console.log("Type of user.name:", typeof user.name);
+            console.log("Is projectTechList an Array?", projectTechList instanceof Array);
+
+            // Boolean coercion examples
+            console.log("Boolean coercion examples:");
+            console.log(Boolean(0), Boolean(1), Boolean(""), Boolean("hello"), Boolean(null), Boolean({}));
+
             // Show some Nan
-            console.error('This is example of math error result: ', num_error);
+            console.error("This is example of math error result: ", num_error);
 
             // Simple timer "While ... do" example
             let i = num_13;
@@ -298,19 +355,17 @@
             }
 
             // Mutate arrays and show result
-            crazyArray03[8] = true
+            crazyArray03[8] = true;
             console.log(`I'm mutated element of the crazyArray02 with index 8: ${crazyArray02[8]}`);
             console.log("I'm mutated crazyArray02 itself:", crazyArray02);
 
             // Output user objects in console
-            console.log('This is user object: ', user)
-            console.log('This is proUser object: ', proUser)
-
+            console.log("This is user object: ", user);
+            console.log("This is proUser object: ", proUser);
 
             // Define resutText01 based on user's unswer and show result alert
             let resutText01 = isDeveloper ? "Check dev console, please!" : 'Press F12 an open "Console" tab, please!';
             alert(resutText01);
-
         </script>
     </body>
 </html>
